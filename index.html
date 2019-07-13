@@ -38,7 +38,8 @@
           	controls:1,
           	showinfo:0,
           	loop:1,
-            fs:1
+            enablejsapi:1,
+            origin:encodeURI('https://shopg.github.io')
           },
           events: {
             'onReady': onPlayerReady,
@@ -124,18 +125,24 @@
      	document.body.requestFullscreen();
   }, false);
 	
+
+
+Make sure you are loading from a URL such as:
+
+https://www.youtube.com/embed/HIbAz29L-FA?modestbranding=1&playsinline=0&showinfo=0&enablejsapi=1&origin=https%3A%2F%2Fintercoin.org&widgetid=1
 </script>
  -->
-
+<!--
  <div>
   <div>---------------------------------------------------</div>
   <div>Another Video </div>
     <div>---------------------------------------------------</div>
 <div>
-   <iframe src="http://www.youtube.com/embed/quVUFnC5YNg?autoplay=1" frameborder="0" allowfullscreen="1" class="lazyloaded" data-was-processed="true"></iframe>
+   <iframe src="https://www.youtube.com/embed/quVUFnC5YNg?autoplay=1&amp;enablejsapi=1&amp;origin=https%3A%2F%2shopg.github.io" frameborder="0" allowfullscreen="1" class="lazyloaded" data-was-processed="true"></iframe>
  </div>
    
  </div>
+-->
 
 </body>
 </html>
