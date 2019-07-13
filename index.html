@@ -37,9 +37,9 @@
           	rel:0,
           	controls:1,
           	showinfo:0,
-          	loop:1,
-            enablejsapi:1,
-            origin:encodeURI('https://shopg.github.io')
+          	loop:1
+            //enablejsapi:1
+            //origin:encodeURI('https://shopg.github.io')
           },
           events: {
             'onReady': onPlayerReady,
@@ -70,7 +70,9 @@
           //alert(player.getIframe().height);
           
           openFullscreen(ifDom);
+          //player.setFullscreen(true);
           event.target.playVideo();
+
           
           //alert(player.getIframe().height);
         }
@@ -82,6 +84,7 @@
           //player.getIframe().width=100%;
 
           //alert(player.getIframe().height);
+          //player.setFullscreen(true);
           closeFullscreen(ifDom);
           //alert(event.data + ' and the value should be ' + YT.PlayerState.ENDED);
         }
@@ -91,15 +94,24 @@
       }
 
     function openFullscreen(elem) {
-		if (elem.requestFullscreen) {
-		  elem.requestFullscreen();
-		} 
-	}
+		  var requestFullScreen = elem.requestFullScreen || elem.mozRequestFullScreen || elem.webkitRequestFullScreen;
+      //alert("Mozilla inter fullscreen! " + requestFullScreen);
+      if (requestFullScreen) {
+        requestFullScreen.bind(elem)();
+      }
+	  }
 
 	function closeFullscreen(elem) {
-		if (elem.exitFullscreen) {
-			elem.exitFullscreen();
-		} 
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+        } else if (document.mozCancelFullScreen) {
+            document.mozCancelFullScreen();
+        } else if (elem.msExitFullscreen) {
+            document.msExitFullscreen();
+        }
+    
 	}
     </script>	
 
@@ -128,7 +140,7 @@
 
 
 Make sure you are loading from a URL such as:
-
+<iframe src="https://www.youtube.com/embed/MvcZ1jFkTyU?autoplay=1" frameborder="0" allowfullscreen="1" class="lazyloaded" data-was-processed="true"></iframe>
 https://www.youtube.com/embed/HIbAz29L-FA?modestbranding=1&playsinline=0&showinfo=0&enablejsapi=1&origin=https%3A%2F%2Fintercoin.org&widgetid=1
 </script>
  -->
